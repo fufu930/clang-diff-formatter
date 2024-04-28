@@ -1,6 +1,6 @@
 # Description
 
-This project utilizes Git and clang-format to apply formatting exclusively to a branch's diff.
+This project utilizes Git and clang-format to apply formatting exclusively to a branch's diff. It's implemented for GitLab CI, but it can be adjusted for most CI tools.
 
 ## Known Issues
 
