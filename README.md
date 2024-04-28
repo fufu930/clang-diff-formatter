@@ -8,4 +8,8 @@ This project utilizes Git and clang-format to apply formatting exclusively to a 
 
 ## Notes
 
-- For Debian Slim images, use the package named `clang-format` on the APT line.
+- For Debian Slim images, use the package named `clang-format` on the APT command.
+
+## Resources
+
+- https://docs.gitlab.com/ee/ci/variables/
