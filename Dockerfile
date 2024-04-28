@@ -1,5 +1,5 @@
-# Use Alpine Linux 3.14 as the base image
-FROM alpine:3.14
+# Use Alpine Linux 3.18 as the base image
+FROM alpine:3.18
 
 # Install Git and clang-extra-tools packages with automatic yes
 RUN apk add --no-cache --update git clang-extra-tools
