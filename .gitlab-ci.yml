@@ -1,0 +1,26 @@
+stages:
+  - format
+
+formatting-job:
+  image: ## Your image goes here ##
+  variables:
+    GIT_DEPTH: "500"
+  allow_failure: true
+  only:
+  - merge_requests
+  stage: format
+  before_script:
+    - git branch -D dev || true
+    - git branch -D format || true
+  script:
+    - git config --local user.email "john.doe@example.com"
+    - git config --local user.name "Formatting Pipeline"
+    - git switch -c dev
+    - git switch -c format
+    - git reset --soft $(git merge-base $CI_MERGE_REQUEST_DIFF_BASE_SHA HEAD)
+    - git clang-format --style=file # If you have an existing .clang-format
+    - git switch dev
+    - git add .    
+    - git commit -m "$CI_MERGE_REQUEST_TITLE" || true
+    - git remote set-url --push origin "https://$TOKEN_NAME:$TOKEN_VALUE@${CI_PROJECT_URL:8}.git"
+    - git push origin HEAD:$CI_COMMIT_REF_NAME
